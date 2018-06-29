@@ -1,0 +1,18 @@
+{
+  "name": "sanjuanbot",
+  "version": "1.0.0",
+  "description": "Bot que tuitea informacion del clima de la ciudad de San Juan del Cesar, La Guajira, Colombia de una estacion de AmbientWeather",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Yomar Gutierrez",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "request": "^2.87.0",
+    "twit": "^2.2.10"
+  }
+}
