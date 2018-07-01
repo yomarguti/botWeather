@@ -16,21 +16,23 @@ app.listen(port,() => {
 });
 
 var T = new Twit({
-  consumer_key:         config.consumer_key,
-  consumer_secret:      config.consumer_secret,
-  access_token:         config.access_token,
-  access_token_secret:  config.access_token_secret,
+  consumer_key:         process.env.consumer_key || config.consumer_key,
+  consumer_secret:      process.env.consumer_secret || config.consumer_secret,
+  access_token:         process.env.access_token || config.access_token,
+  access_token_secret:  process.access_token_secret || config.access_token_secret,
   //timeout_ms:           60*1000,  // optional HTTP request timeout to apply to all requests.
   //strictSSL:            true,     // optional - requires SSL certificates to be valid.
 });
 
+const appApiAmbient = process.env.AMBIENT_WEATHER_API_KEY || config.AMBIENT_WEATHER_APPLICATION_KEY;
+const apiKeyAmbient = process.env.AMBIENT_WEATHER_APPLICATION_KEY || config.AMBIENT_WEATHER_API_KEY;
 
 var stream = T.stream('statuses/filter', { track: ['@SnJuanDCesarBot'] });
 stream.on('tweet', tweetEvent);
 
 function tweetEvent(tweet) {
     request({
-        url:`https://api.ambientweather.net/v1/devices?applicationKey=${config.AMBIENT_WEATHER_APPLICATION_KEY}&apiKey=${config.AMBIENT_WEATHER_API_KEY}`,
+        url:`https://api.ambientweather.net/v1/devices?applicationKey=${appApiAmbient}&apiKey=${apiKeyAmbient}`,
         json: true
     }, function (error, response, body) {
         var dataWeather = body[0].lastData
