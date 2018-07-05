@@ -1,13 +1,10 @@
 const request = require('request');
-const config = require('./config');
 
-const appApiAmbient = process.env.AMBIENT_WEATHER_API_KEY || config.AMBIENT_WEATHER_APPLICATION_KEY;
-const apiKeyAmbient = process.env.AMBIENT_WEATHER_APPLICATION_KEY || config.AMBIENT_WEATHER_API_KEY;
 
 var getWeather = (callback)=>{
 
     request({
-        url:`https://api.ambientweather.net/v1/devices?applicationKey=${appApiAmbient}&apiKey=${apiKeyAmbient}`,
+        url:`https://api.ambientweather.net/v1/devices?applicationKey=${process.env.AMBIENT_WEATHER_APPLICATION_KEY}&apiKey=${process.env.AMBIENT_WEATHER_API_KEY}`,
         json: true
     }, function (error, response, body) {
 
