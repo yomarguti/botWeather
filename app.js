@@ -4,7 +4,7 @@ const twitterJob = require('./twitterJob');
 var CronJob = require('cron').CronJob;
 
 var job = new CronJob({
-    cronTime: '00 00 8,12,18,20 * * *',
+    cronTime: '00 15 8,12,18,20,22 * * *',
     onTick: function() {
       /*
        * Runs everyday 
