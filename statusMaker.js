@@ -1,4 +1,5 @@
 const weatherFuncs = require('./weatherFunctions');
+const moment = require('moment');
 
 var stringStatus = (dataWeather, nameUser) => {
     const tempC = weatherFuncs.tempGradosCent(dataWeather.tempf );
@@ -15,7 +16,8 @@ var stringStatus = (dataWeather, nameUser) => {
     //emoji
     const emojiSensacion = sensacionTermica > 31 ? `${String.fromCodePoint(0x1F613)}` : `${String.fromCodePoint(0x2744)}`;
 
-    const strStart = nameUser? `Hola @${nameUser}, aquí tienes los datos del clima ahora:\n` : `Reporte del cilma:\n`
+    const hora = `${moment(dataWeather.date).format('hA')}`;
+    const strStart = nameUser? `Hola @${nameUser}, aquí tienes los datos del clima ahora:\n` : `Reporte ${hora} del cilma:\n`;
 
 
 
