@@ -17,5 +17,3 @@ var job = new CronJob({
     start: true,
     timeZone: 'America/Bogota'
   });
-
-

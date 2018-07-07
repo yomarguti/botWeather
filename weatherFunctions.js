@@ -1,8 +1,8 @@
-var moment = require('moment');
+var moment = require('moment-timezone');
 moment.locale('es');
 
 var fechaStr = (date) => {
-    return moment(date).format('LLLL');
+    return moment(date).tz('America/Bogota').format('LLLL');
     
 };
 
