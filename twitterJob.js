@@ -67,6 +67,27 @@ var tuitWeather = () => {
 
 }
 
+var tuitStats = (date,limit) => {
+    ambient.getWeatherDataPoints(date, limit, (errorMessage, dataWeather)=>{
+        if (errorMessage) {
+            console.log(`Error: ${errorMessage}`);
+        } else {
+            var tuit = statusMaker.statusStats(dataWeather);
+        }
+
+
+/*         T.post('statuses/update', { status: tuit }, function(err, data, response) {
+            if (err !== undefined) {
+                console.log(err);
+            } else {
+                console.log('Tweeted: ');
+            }
+        }); */
+    });
+
+
+}
 module.exports = {
-    tuitWeather
+    tuitWeather,
+    tuitStats
 }

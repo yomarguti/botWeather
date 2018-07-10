@@ -38,7 +38,28 @@ var stringStatus = (dataWeather, nameUser) => {
     return status;
 }
 
+var statusStats = (dataWeatherArray) => {
+    var arrayMax =[];
+    maxF = Math.max.apply(Math,dataWeatherArray.map(function(data){
+        //console.log(`${moment(data.date).tz('America/Bogota').format('LLLL')}:${data.tempf}`);
+        console.log(`Server: ${data.date} --- ------- Parsed: ${moment(data.date).tz('America/Bogota')}  ------- utc: ${moment.utc(data.date)}`);
+
+        return data.tempf
+    }));
+    dataWeatherArray.forEach(element => {
+        if (element.tempf == maxF) {
+            arrayMax.push(element);
+        }
+    });
+    console.log(maxF);
+    console.log(`La Temperatura maxima fue de ${weatherFuncs.tempGradosCent(maxF)}`);
+    console.log(`A las ${moment(arrayMax[0].date).tz('America/Bogota').format('hh:mm A')}`);
+    //console.log(arrayMax);
+
+}
+
 
 module.exports = {
-    stringStatus
+    stringStatus,
+    statusStats
 }
